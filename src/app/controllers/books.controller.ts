@@ -39,23 +39,13 @@ booksRoutes.post("/", async (req: Request, res: Response) => {
 // Get All Books or by provided query parameters
 booksRoutes.get("/", async (req: Request, res: Response) => {
   try {
-    // If no query parameters are provided, return 10 books by default
+    // If no query parameters are provided, return all books
     if (Object.keys(req.query).length === 0) {
-      const books = await Book.find({}).sort({ updatedAt: -1 }).limit(10);
-      const totalBooks = await Book.countDocuments({});
-      
+      const books = await Book.find({});
       res.status(200).json({
         success: true,
         message: "Books retrieved successfully",
         data: books,
-        pagination: {
-          currentPage: 1,
-          totalPages: Math.ceil(totalBooks / 10),
-          totalBooks,
-          limit: 10,
-          hasNextPage: totalBooks > 10,
-          hasPrevPage: false,
-        },
       });
       return;
     }
@@ -69,9 +59,9 @@ booksRoutes.get("/", async (req: Request, res: Response) => {
       return;
     }
 
-    const { filter, sortBy, sort, limit = 10, page = 1 } = parseResult.data as IReqQuery;
+    const { filter, sortBy, sort, limit = 10 } = parseResult.data as IReqQuery;
 
-    // Build query based on filter
+    // Build query based on filter and sort and limit query parameters
     const query: Record<string, any> = {};
     if (filter) {
       query.genre = filter.toUpperCase();
@@ -82,31 +72,13 @@ booksRoutes.get("/", async (req: Request, res: Response) => {
       sortOptions[sortBy] = sort === "desc" ? -1 : 1;
     }
 
-    // Calculate pagination
-    const skip = (page - 1) * limit;
-    
-    // Get total count for pagination info
-    const totalBooks = await Book.countDocuments(query);
-    const totalPages = Math.ceil(totalBooks / limit);
-
-    // Get books with pagination
-    const books = await Book.find(query)
-      .sort(sortOptions)
-      .skip(skip)
-      .limit(Number(limit));
+    // If no sortBy is provided, default to sorting by title in ascending order
+    const books = await Book.find(query).sort(sortOptions).limit(Number(limit));
 
     res.status(200).json({
       success: true,
       message: "Books retrieved successfully",
       data: books,
-      pagination: {
-        currentPage: page,
-        totalPages,
-        totalBooks,
-        limit,
-        hasNextPage: page < totalPages,
-        hasPrevPage: page > 1,
-      },
     });
   } catch (error) {
     res.status(500).json({

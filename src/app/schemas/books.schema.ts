@@ -84,15 +84,7 @@ export const querySchema = z.object({
       message: "Limit must be a positive number",
     })
     .optional()
-    .default("10"),
-    page: z
-    .string()
-    .transform(Number)
-    .refine((val) => val > 0, {
-      message: "Page must be a positive number",
-    })
-    .optional()
-    .default("1"),
+    .default("10")
 });
 
 export const bookParamsSchema = z.object({
