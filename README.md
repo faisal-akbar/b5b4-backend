@@ -2,7 +2,7 @@
 This project is a simple library management API built using Express, TypeScript, and MongoDB. It provides endpoints for managing books, and borrow records.
 
 ### Live API Entry Point
-You can access the live API at [https://b5b4-backend.vercel.app/](https://b5b4-backend.vercel.app/).
+You can access the live API at [hhttps://b5b4-backend.vercel.app/](hhttps://b5b4-backend.vercel.app/).
 
 ### Features:
 - Type-safe API with TypeScript
@@ -29,7 +29,7 @@ You can access the live API at [https://b5b4-backend.vercel.app/](https://b5b4-b
    ```
 2. Navigate to the project directory:
    ```bash
-    cd b5a3
+    cd b5b4-backend
     ```
 3. Install the dependencies:
     ```bash
@@ -53,7 +53,7 @@ You can access the live API at [https://b5b4-backend.vercel.app/](https://b5b4-b
 
 ### API Endpoints
 - **Books**
-  - `GET /api/books`: Get all books,, and can be adjusted with query parameters.
+  - `GET /api/books`: Get all books,, and can be adjusted with query parameters for pagination, sorting, and filtering and limiting.
     - Example: `/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5&page=1`
   - `POST /api/books`: Create a new book
   - `GET /api/books/:bookId`: Get a book by ID
