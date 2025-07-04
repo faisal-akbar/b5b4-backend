@@ -2,7 +2,7 @@
 This project is a simple library management API built using Express, TypeScript, and MongoDB. It provides endpoints for managing books, and borrow records.
 
 ### Live API Entry Point
-You can access the live API at [b5a3.vercel.app](b5a3.vercel.app).
+You can access the live API at [https://b5b4-backend.vercel.app/](https://b5b4-backend.vercel.app/).
 
 ### Features:
 - Type-safe API with TypeScript
@@ -25,7 +25,7 @@ You can access the live API at [b5a3.vercel.app](b5a3.vercel.app).
 ### How to Run the Project Locally
 1. Clone the repository:
    ```bash
-   git clone https://github.com/faisal-akbar/b5a3.git
+   git clone https://github.com/faisal-akbar/b5b4-backend.git
    ```
 2. Navigate to the project directory:
    ```bash
