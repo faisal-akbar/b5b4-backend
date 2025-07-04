@@ -17,6 +17,7 @@ export interface IReqQuery {
   sortBy?: string | undefined;
   sort?: "asc" | "desc";
   limit?: number;
+  page?: number;
 }
 
 export interface IBookStaticMethod extends Model<IBooks> {

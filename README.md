@@ -11,6 +11,7 @@ You can access the live API at [b5a3.vercel.app](b5a3.vercel.app).
 - static method for update available status of books
 - pre hook for updating the available status when book copies update to 0 or more than 0.
 - post hook to delete borrow records when book is deleted.
+- Pagination for book listings
 
 ### Technologies Used
 - Node.js
@@ -52,8 +53,8 @@ You can access the live API at [b5a3.vercel.app](b5a3.vercel.app).
 
 ### API Endpoints
 - **Books**
-  - `GET /api/books`: Get all books, default limit is 10, and can be adjusted with query parameters.
-    - Example: `/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5`
+  - `GET /api/books`: Get all books,, and can be adjusted with query parameters.
+    - Example: `/api/books?filter=FANTASY&sortBy=createdAt&sort=desc&limit=5&page=1`
   - `POST /api/books`: Create a new book
   - `GET /api/books/:bookId`: Get a book by ID
   - `PUT /api/books/:bookId`: Update a book by ID
